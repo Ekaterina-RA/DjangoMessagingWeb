@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "messaging",
 
 ]
 
@@ -147,9 +148,16 @@ EMAIL_HOST_PASSWORD ='iuse psim atpu loaw' # указан пароль прил�
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 #AUTH_USER_MODEL = 'users.User'
-LOGIN_REDIRECT_URL = '/products/'
-LOGOUT_REDIRECT_URL = '/users/login/'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+
 
 CACHE_ENABLED = True
 if CACHE_ENABLED:
